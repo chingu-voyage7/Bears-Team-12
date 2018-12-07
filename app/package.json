@@ -8,6 +8,7 @@
     "apollo-link-http": "^1.5.7",
     "axios": "^0.18.0",
     "graphql": "^14.0.2",
+    "graphql-tag": "^2.10.0",
     "react": "^16.6.3",
     "react-apollo": "^2.3.2",
     "react-dom": "^16.6.3",
@@ -29,5 +30,5 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "proxy": "http://localhost:3035"
+  "proxy": "http://localhost:4000"
 }
