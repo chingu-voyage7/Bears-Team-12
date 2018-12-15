@@ -12,7 +12,9 @@ const Header = () => (
     {" | "} 
     <Link to={"/about"}><span>About</span></Link>
     {" | "} 
-    Sign In
+    <a href={'/auth/facebook'}>
+      Sign in
+    </a>
   </div>
 
 )

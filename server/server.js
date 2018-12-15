@@ -35,4 +35,4 @@ const server = new ApolloServer({
 })
 server.applyMiddleware({ app }) // app is from an existing express app
 
-app.listen(PORT, () => console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`))
+app.listen(PORT, () => console.log(`🚀GraphQL Server is ready at http://localhost:4000${server.graphqlPath}`))

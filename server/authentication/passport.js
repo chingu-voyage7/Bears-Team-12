@@ -5,22 +5,37 @@ const User = require('../models/User')
 passport.use(new FacebookStrategy({
   clientID: process.env.FACEBOOK_APP_ID,
   clientSecret: process.env.FACEBOOK_APP_SECRET,
-  callbackURL: "http://localhost:3000/auth/facebook/callback"
-},
-function(accessToken, refreshToken, profile, cb) {
-  console.log(profile)
-  User.findOrCreate({ facebookId: profile.id }, function (err, user) {
-    return cb(err, user);
-  });
-}
+  callbackURL: process.env.FACEBOOK_CALLBACK_URL
+  },
+  (accessToken, refreshToken, profile, done) => {
+
+    console.log('Signing in as ', profile)
+    
+    User.findOne({ facebookId: profile.id }).then((err, user) => {
+      if (err) return err
+      if (user) {
+        console.log('Signed in as ', user, 'with facebook profile ', profile)
+        done(null, user)
+      } else {
+        new User({
+          facebookId: profile.id
+        }).save().then((newUser) => {
+          console.log('New user created: ', newUser)
+          done(null, newUser)
+        })
+      }
+    });
+  
+  }
+
 ));
 
-passport.serializeUser((user, cb) => {
-	cb(null, user.id)
+passport.serializeUser((user, done) => {
+	done(null, user.id)
 })
 
-passport.deserializeUser((id, cb) => {
+passport.deserializeUser((id, done) => {
 	User.findById(id).then((user) => {
-		cb(null, user)
+		done(null, user)
 	})
 })
