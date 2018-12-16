@@ -7,9 +7,33 @@ const resolvers = {
     allCommunities() {
       return Community.find({})
     },
+    community(obj, args) {
+      return Community.findById(args.id)
+    },
+    allSubjects() {
+      return Subject.find({})
+    },
+    subject(obj, args) {
+      return Subject.findById(args.id)
+    },
+    allArticles() {
+      return Article.find({}, null, {sort: {dateCreated: -1}})
+    },
+    article(obj, args) {
+      return Article.findById(args.id)
+    },
+    allCategories() {
+      return Category.find({})
+    },
+    category(obj, args) {
+      return Category.findById(args.id)
+    },
     allUsers() {
       return User.find({})
-    }
+    },
+    user(obj, args) {
+      return User.findById(args.id)
+    },
   },
 
   Mutation: {
@@ -20,6 +44,26 @@ const resolvers = {
         //createdBy: context.user._id
       })
       return newCommunity.save()
+    },
+    createSubject: (obj, args, context) => {
+      const newSubject = new Subject({
+        name: args.name,
+        //owner: context.user._id,
+        //createdBy: context.user._id
+      })
+      return newSubject.save()
+    },
+    createArticle: (obj, args, context) => {
+      const newArticle = new Article({
+        name: args.name
+      })
+      return newArticle.save()
+    },
+    createCategory: (obj, args, context) => {
+      const newCategory = new Category({
+        name: args.name
+      })
+      return newCategory.save()
     },
     createUser: (obj, args, context) => {
       const newUser = new User({

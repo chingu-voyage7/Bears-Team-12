@@ -2,12 +2,15 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const userSchema = new Schema({
+  facebookId: String,
   username: String,
-  firstName: String,
-  lastName: String,
-  createdCommunities: [{ type: Schema.Types.ObjectId, ref: 'Community'}],
-  memberships: [{ type: Schema.Types.ObjectId, ref: 'Community'}],
-  dateCreated: { type: Date, default: Date.now() }
+  name: String,
+  photo: String,
+  bio: String,
+  email: String,
+  location: String,
+  dateCreated: { type: Date, default: Date.now() },
+  lastUpdated: { type: Date }
 })
 
 module.exports = mongoose.model('communities-user', userSchema)
