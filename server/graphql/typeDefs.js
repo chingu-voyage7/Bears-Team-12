@@ -60,15 +60,43 @@ type User {
 }
 
 type Query {
-  allUsers: [User]
   allCommunities: [Community]
+  community: Community
+  allSubjects: [Subject]
+  subject: Subject
+  allArticles: [Article]
+  article: Article
+  allCategories: [Category]
+  category: Category
+  allUsers: [User]
+  user: User
 }
 
 type Mutation {
   createCommunity(name: String!): Community
+  createSubject(name: String!): Subject
+  createArticle(name: String!): Article
+  createCategory(name: String!): Category
   createUser(username: String!): User
 }
 
 `
 
 module.exports = typeDefs
+
+/*
+
+type Mutation {
+  createCommunity(name: String!): Community
+  updateCommunity(id: String!): Community
+  createSubject(name: String!): Subject
+  updateSubject(id: String!): Subject
+  createArticle(name: String!): Article
+  updateArticle(id: String!): Article
+  createCategory(name: String!): Category
+  updateCategory(id: String!): Category
+  createUser(username: String!): User
+  updateUser(id: String!): User
+}
+
+*/
