@@ -7,7 +7,7 @@ import './Header.css'
 const Header = () => (
     <nav className="navbar header" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
-        <a className="navbar-item" href="#">
+        <a className="navbar-item" href="/">
           Communities
         </a>
         <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -34,12 +34,12 @@ const Header = () => (
               <hr className="navbar-divider" />
             </div>
           </div>
-          <div className="navbar-item" href="#">
-              <input class="input" type="text" placeholder="Search subjects" />
+          <div className="navbar-item">
+              <input className="input" type="text" placeholder="Search subjects" />
           </div>
         </div>
         <div className="navbar-end">
-            <a className="navbar-item" href="#">
+            <a className="navbar-item" href="/about">
                 About
             </a>
           <div className="navbar-item">
@@ -50,7 +50,7 @@ const Header = () => (
                   }}>
                 <strong>Sign up</strong>
               </a>
-              <a className="button blue">
+              <a className="button blue" href="/auth/facebook">
                 Log in
               </a>
             </div>

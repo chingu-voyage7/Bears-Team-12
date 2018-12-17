@@ -8,9 +8,10 @@ import axios from 'axios'
 import './App.css'
 
 import Landing from 'views/Landing'
+import About from 'views/About'
+
 import Header from 'components/Header'
 import Footer from 'components/Footer'
-import About from 'components/About'
 
 const testBackend = message => {
 

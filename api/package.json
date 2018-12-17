@@ -11,7 +11,7 @@
   "author": "Chingu Voyage-7 Bears-Team-12",
   "license": "",
   "dependencies": {
-    "apollo-server-express": "^2.2.6",
+    "apollo-server-express": "^2.3.1",
     "express": "^4.16.4",
     "graphql": "^14.0.2"
   }
