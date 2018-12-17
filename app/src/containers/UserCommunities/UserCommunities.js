@@ -23,5 +23,3 @@ export default graphql(gql`
     }
   }
 `)(UserCommunitiesContainer)
-
-export default UserCommunitiesContainer
