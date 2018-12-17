@@ -7,11 +7,12 @@ To start this project locally:
 
 ## Usage
 
-Project requires mongodb installed
+Project requires [MongoDB](https://www.mongodb.com/) installed.
 
-Go to https://developers.facebook.com, create an app, and obtain an a Facebook Login ID and Secret.
+Go to https://developers.facebook.com, create an app, and obtain a Facebook Login ID and Secret.
 
 Create a .env file in the server folder and save the following in the file:
+
 ```
 FACEBOOK_APP_ID=
 FACEBOOK_APP_SECRET=
