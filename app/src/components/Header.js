@@ -13,7 +13,15 @@ const Header = () => (
     <Link to={"/about"}><span>About</span></Link>
     {" | "} 
     <a href={'/auth/facebook'}>
-      Sign in
+      Facebook
+    </a>
+    {" | "} 
+    <a href={'/auth/google'}>
+      Google
+    </a>
+    {" | "} 
+    <a href={'/auth/logout'}>
+      Sign Out
     </a>
   </div>
 

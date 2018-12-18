@@ -9,7 +9,7 @@ type Community {
   admins: [User]
   members: [User]
   followers: [User]
-  Subjects: [Subject]
+  subjects: [Subject]
   createdBy: User
   createdOn: String
   lastUpdated: String
@@ -49,8 +49,10 @@ type Category {
 type User {
   id: ID
   facebookId: String
-  username: String
-  name: String
+  googleId: String
+  displayName: String
+  familyName: String
+  givenName: String
   photo: String
   bio: String
   email: String

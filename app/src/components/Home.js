@@ -40,7 +40,7 @@ class Home extends React.Component {
 export default graphql(
   gql`
     query Query {
-      firstName
+      displayName
     }
   `
 )(Home)
