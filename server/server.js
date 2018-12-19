@@ -32,12 +32,7 @@ app.use('/', authRouter)
 // Apollo GraphQL Server
 const server = new ApolloServer({
   typeDefs,
-  resolvers,
-  context: ({ req }) => {
-    const token = req.cookie.user || '';
-    console.log('apolloserver user: ', token)
-    return { token };
-  },
+  resolvers
 })
 
 server.applyMiddleware({ app }) // app is from an existing express app
