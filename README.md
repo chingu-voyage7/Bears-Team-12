@@ -10,6 +10,7 @@ To start this project locally:
 Project requires [MongoDB](https://www.mongodb.com/) installed.
 
 Go to https://console.developers.google.com/, create a project, enable the Google+ API, and obtain the ID and Secret credentials.
+
 Go to https://developers.facebook.com, create an app, and obtain a Facebook Login ID and Secret.
 
 Create a .env file in the server folder and save the following in the file:
