@@ -1,5 +1,8 @@
-const User = require ('../models/User')
 const Community = require ('../models/Community')
+const Subject = require ('../models/Subject')
+const Article = require ('../models/Article')
+const Category = require ('../models/Category')
+const User = require ('../models/User')
 
 const resolvers = {
 
@@ -54,8 +57,10 @@ const resolvers = {
       return newSubject.save()
     },
     createArticle: (obj, args, context) => {
+      if (!context.user) return []
       const newArticle = new Article({
-        name: args.name
+        name: args.name,
+        createdBy: context.user._id
       })
       return newArticle.save()
     },
@@ -82,7 +87,7 @@ module.exports = resolvers
 query {
   allUsers {
     id
-    username
+    displayName
   }
 }
 
@@ -96,7 +101,7 @@ query {
 mutation {
   createUser (username: "Jordan") {
     id
-    username
+    displayName
   }
 }
 
@@ -106,7 +111,7 @@ mutation {
     name
     owner {
       id
-      username
+      displayName
     }
     createdBy
   }
