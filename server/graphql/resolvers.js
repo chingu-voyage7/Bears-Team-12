@@ -57,10 +57,8 @@ const resolvers = {
       return newSubject.save()
     },
     createArticle: (obj, args, context) => {
-      if (!context.user) return []
       const newArticle = new Article({
-        name: args.name,
-        createdBy: context.user._id
+        name: args.name
       })
       return newArticle.save()
     },
