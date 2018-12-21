@@ -1,4 +1,43 @@
 const typeDefs = `
+# A user of the application
+type User {
+  id: ID!
+  displayName: String!
+  email: String!
+  location: String
+  facebookId: String
+  googleId: String
+  createdAt: Date
+  updatedAt: Date
+}
+
+scalar Date
+
+input UserUpdateInput {
+  id: ID!
+  displayName: String
+  email: String
+  location: String
+  facebookId: String
+  googleId: String
+}
+
+type Query {
+  allUsers: [User]
+  user(displayName: String!): User
+}
+
+type Mutation {
+  createUser(displayName: String!, email: String!): User
+  updateUser(input: UserUpdateInput): User
+  deleteUser(id: ID!): User
+}
+`
+
+module.exports = typeDefs
+
+/**
+const typeDefs = `
 
 type Community {
   id: ID
@@ -85,6 +124,7 @@ type Mutation {
 `
 
 module.exports = typeDefs
+ */
 
 /*
 
