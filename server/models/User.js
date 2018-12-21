@@ -1,3 +1,24 @@
+const bookshelf = require('../db');
+
+const User = bookshelf.Model.extend({
+  tableName: 'users',
+  hasTimestamps: false,
+}, {
+  byDisplayName(displayName) {
+    return this.forge().query({ where: { display_name: displayName } }).fetch()
+  }
+})
+
+const Users = bookshelf.Collection.extend({  
+  model: User
+})
+
+module.exports = {
+  User,
+  Users,
+}
+
+/**
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
@@ -16,3 +37,4 @@ const userSchema = new Schema({
 })
 
 module.exports = mongoose.model('communities-user', userSchema)
+*/
