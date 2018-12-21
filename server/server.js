@@ -15,12 +15,6 @@ const app = express()
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
-// Mongoose MongoDB
-mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/communities');
-mongoose.connection.once('open', () => {
-  console.log('Connected to MongoDB')
-})
-
 app.use(session({ secret: 'asdf' }))
 // Initialize Passport
 require('./authentication/passport')
