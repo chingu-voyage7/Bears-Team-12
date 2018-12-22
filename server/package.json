@@ -5,7 +5,8 @@
   "main": "server.js",
   "private": true,
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev-start": "./node_modules/nodemon/bin/nodemon.js ./server.js"
   },
   "keywords": [],
   "author": "Chingu Voyage-7 Bears-Team-12",
@@ -24,5 +25,8 @@
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
     "passport-google-oauth": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
   }
 }
