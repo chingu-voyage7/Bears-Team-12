@@ -9,11 +9,27 @@ type User {
   googleId: String
   createdAt: Date
   updatedAt: Date
+  communities: [Community]
+}
+
+type Community {
+  id: ID!
+  name: String!
+  description: String
+  createdAt: Date
+  updatedAt: Date
+  users: [User]
+}
+
+type CommunityUser {
+  id: ID!
+  user_id: ID!
+  community_id: ID!
 }
 
 scalar Date
 
-input UserUpdateInput {
+input UpdateUserInput {
   id: ID!
   displayName: String
   email: String
@@ -22,15 +38,28 @@ input UserUpdateInput {
   googleId: String
 }
 
+input CreateCommunityInput {
+  name: String!
+  description: String
+}
+
+input AddUserToCommunityInput {
+  userId: ID!
+  communityId: ID!
+}
+
 type Query {
   allUsers: [User]
   user(displayName: String!): User
+  allCommunities: [Community]
 }
 
 type Mutation {
   createUser(displayName: String!, email: String!): User
-  updateUser(input: UserUpdateInput): User
+  updateUser(input: UpdateUserInput): User
   deleteUser(id: ID!): User
+  createCommunity(input: CreateCommunityInput): Community
+  addUserToCommunity(input: AddUserToCommunityInput): CommunityUser
 }
 `
 
