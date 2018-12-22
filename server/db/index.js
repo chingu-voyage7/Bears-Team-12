@@ -2,4 +2,9 @@ const knex = require('knex')(require('../knexfile'))
 
 const bookshelf = require('bookshelf')(knex)
 
-module.exports = bookshelf
+bookshelf.plugin('registry')
+
+module.exports = {
+  bookshelf,
+  knex
+}
