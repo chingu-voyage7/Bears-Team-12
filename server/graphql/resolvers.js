@@ -1,7 +1,8 @@
 const GraphQLScalarType = require('graphql').GraphQLScalarType
 const Kind = require('graphql/language').Kind
 
-const { User, Users } = require ('../models/User')
+const { User, Community } = require ('../models')
+const { knex } = require('../db')
 
 const resolvers = {
   Date: new GraphQLScalarType({
@@ -23,21 +24,30 @@ const resolvers = {
 
   Query: {
     async allUsers() {
-      const users = await User.fetchAll().then((users) => {
+      const users = await User.fetchAll({ withRelated: ['communities'] }).then((users) => {
+        console.log(users.toJSON())
         return users.toJSON()
       })
       return users
     },
 
     async user(_, { displayName }) {
-      const user = await User.where('displayName', displayName).fetch()
+      const user = await User.where('displayName', displayName).fetch({ withRelated: ['communities'] })
         .then((user) => {
           if (!user) return
           return user.toJSON()
         })
 
       return user
+    },
+
+    async allCommunities() {
+      const communities = await Community.fetchAll({ withRelated: ['users'] }).then((communities) => {
+        return communities.toJSON()
+      })
+      return communities
     }
+
     /**
     allCommunities() {
       return Community.find({})
@@ -107,7 +117,6 @@ const resolvers = {
             return saved.toJSON()
           })
 
-      console.log(`Updated user ${updatedUser.displayName}`)
       return updatedUser
     },
 
@@ -124,6 +133,25 @@ const resolvers = {
           return deletedUser.toJSON()
         })
       return user
+    },
+
+    async createCommunity(obj, { input }, context) {
+      const community = new Community({
+        name: input.name,
+        description: input.description,
+      }).save()
+        .then((community) => {
+          return community.toJSON()
+        })
+      return community
+    },
+
+    async addUserToCommunity(obj, { input }, context) {
+      const userCommunity = await knex.raw('INSERT INTO communities_users (user_id, community_id) VALUES (:user, :community)', {
+        user: input.userId,
+        community: input.communityId
+      }).then((res) => console.log(JSON.stringify(res)))
+      return userCommunity
     }
 
     /**
