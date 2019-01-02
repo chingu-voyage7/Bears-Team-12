@@ -24,11 +24,17 @@ FACEBOOK_APP_SECRET=
 FACEBOOK_CALLBACK_URL=http://localhost:3000/auth/facebook/callback
 ```
 
+Setup a database connection in the `server/knexfile.js` file. By default it uses `mysql`, however, you can change it to use `postgresql` by uninstalling `mysql` with `$ npm uninstall mysql`, then install the node `postgresql` module with `$ npm i pg`.
+
+Again, change your connection settings in `server/knexfile.js`, and make sure you replace `mysql` with `pg`.
+
+You must install `knex` globally with `$ npm i -g knex`.
+
 Then in your Terminal(s):
 
 * `$ npm i` in the server folder
 * `$ npm i` in the app folder
-* `$ mongod`
+* `$ knex migrate:latest` in the server folder
 * `$ npm start` in the server folder
 * `$ npm start` in the app folder
 
