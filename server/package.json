@@ -6,7 +6,8 @@
   "private": true,
   "scripts": {
     "start": "node server.js",
-    "dev-start": "./node_modules/nodemon/bin/nodemon.js ./server.js"
+    "dev-start": "./node_modules/nodemon/bin/nodemon.js ./server.js",
+    "knex": "./node_modules/.bin/knex"
   },
   "keywords": [],
   "author": "Chingu Voyage-7 Bears-Team-12",
