@@ -1,0 +1,13 @@
+.about-wrapper {
+    margin: 6rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.section-title {
+    font-weight: bold;
+}
+
+.section-content {
+    font-size: 2rem;
+}

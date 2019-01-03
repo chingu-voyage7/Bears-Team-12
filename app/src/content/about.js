@@ -1,0 +1,2 @@
+export default `We're a group of renegade software developers who had enough with the fake-news empire. So we decided to take them on with our keyboards.
+This battle for freedom of expression is driven by our love of country. Join us. Create your educational content to help us build a parallel network of truths.`
